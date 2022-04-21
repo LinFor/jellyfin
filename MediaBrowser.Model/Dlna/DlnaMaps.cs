@@ -27,7 +27,7 @@ namespace MediaBrowser.Model.Dlna
             }
 
             // No seeking is available if we don't know the content runtime
-            return "00";
+            return isDirectStream ? "01" : "00";
         }
 
         public static string GetImageOrgOpValue()

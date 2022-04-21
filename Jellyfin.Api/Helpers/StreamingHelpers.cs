@@ -390,19 +390,24 @@ namespace Jellyfin.Api.Helpers
         /// <param name="startTimeTicks">The start time in ticks.</param>
         private static void AddTimeSeekResponseHeaders(StreamState state, IHeaderDictionary responseHeaders, long? startTimeTicks)
         {
-            var runtimeSeconds = TimeSpan.FromTicks(state.RunTimeTicks!.Value).TotalSeconds.ToString(CultureInfo.InvariantCulture);
-            var startSeconds = TimeSpan.FromTicks(startTimeTicks ?? 0).TotalSeconds.ToString(CultureInfo.InvariantCulture);
+            var runtimeSpan = TimeSpan.FromTicks(state.RunTimeTicks!.Value);
+            var startSpan = TimeSpan.FromTicks(startTimeTicks ?? 0);
 
             responseHeaders.Add("TimeSeekRange.dlna.org", string.Format(
                 CultureInfo.InvariantCulture,
-                "npt={0}-{1}/{1}",
-                startSeconds,
-                runtimeSeconds));
+                "npt={0:%h\\:mm\\:ss}-{1:%h\\:mm\\:ss}/{1:%h\\:mm\\:ss}",
+                startSpan,
+                runtimeSpan));
+            // responseHeaders.Add("TimeSeekRange.dlna.org", string.Format(
+            //     CultureInfo.InvariantCulture,
+            //     "npt={0:0}-{1:0}/{1:0}",
+            //     startSpan.TotalSeconds,
+            //     runtimeSpan.TotalSeconds));
             responseHeaders.Add("X-AvailableSeekRange", string.Format(
                 CultureInfo.InvariantCulture,
                 "1 npt={0}-{1}",
-                startSeconds,
-                runtimeSeconds));
+                startSpan.TotalSeconds,
+                runtimeSpan.TotalSeconds));
         }
 
         /// <summary>
