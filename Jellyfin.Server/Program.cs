@@ -583,8 +583,8 @@ namespace Jellyfin.Server
             return config
                 .SetBasePath(appPaths.ConfigurationDirectoryPath)
                 .AddInMemoryCollection(inMemoryDefaultConfig)
-                .AddJsonFile(LoggingConfigFileDefault, optional: false, reloadOnChange: true)
-                .AddJsonFile(LoggingConfigFileSystem, optional: true, reloadOnChange: true)
+                .AddJsonFile(LoggingConfigFileDefault, optional: false, reloadOnChange: false)
+                .AddJsonFile(LoggingConfigFileSystem, optional: true, reloadOnChange: false)
                 .AddEnvironmentVariables("JELLYFIN_")
                 .AddInMemoryCollection(commandLineOpts.ConvertToConfig());
         }

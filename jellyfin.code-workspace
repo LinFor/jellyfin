@@ -12,6 +12,7 @@
             "**/jellyfin-web": true,
             "**/obj": true
         },
-        "formatFiles.excludePattern": "**/node_modules,**/.vscode,**/dist/**,**/.chrome,ThirdParty,RSSDP,Mono.Nat,unRaid,debian"
+        "formatFiles.excludePattern": "**/node_modules,**/.vscode,**/dist/**,**/.chrome,ThirdParty,RSSDP,Mono.Nat,unRaid,debian",
+        "editor.formatOnType": true
     }
 }
