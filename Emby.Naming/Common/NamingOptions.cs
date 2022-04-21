@@ -282,6 +282,38 @@ namespace Emby.Naming.Common
 
             EpisodeExpressions = new[]
             {
+                // Usenet: year than season number
+                // Shadow.and.Bone.2021.S01.WEB-DL.1080p-Kyle/Shadow.and.Bone.2021.S01E02.WEB-DL.1080p-Kyle.mkv
+                new EpisodeExpression(@"(?<seriesname>[\w\.\ ]+?)\.(?<year>[1-2]\d{3})\.[Ss](?<seasonnumber>\d{1,2})\..*[\\\/](\k<seriesname>\.)?(\k<year>\.)?([Ss]\k<seasonnumber>)?([Ee]?(?<epnumber>(\d{1,3}|[3-90]\d{3})))\.(\k<seriesname>\.)?(\k<year>\.)?([Ss]\k<seasonnumber>\.)?((?<epname>[\w\.\ ]+)\.)?(\k<year>\.)?.*$")
+                {
+                    IsNamed = true
+                },
+
+                // Usenet: Season number than year
+                // Zhuki.S02.2021.WEB-DL.1080p/06.Zhuki.S02.2021.WEB-DL.1080p.mkv
+                new EpisodeExpression(@"(?<seriesname>[\w\.\ ]+?)\.[Ss](?<seasonnumber>\d{1,2})\.(?<year>[1-2]\d{3})\..*[\\\/](\k<seriesname>\.)?([Ss]\k<seasonnumber>\.)?(\k<year>\.)?([Ss]\k<seasonnumber>)?([Ee]?(?<epnumber>(\d{1,3}|[3-90]\d{3})))\.(\k<seriesname>\.)?([Ss]\k<seasonnumber>\.)?(\k<year>\.)?((?<epname>[\w\.\ ]+)\.)?(\k<year>\.)?.*$")
+                {
+                    IsNamed = true
+                },
+
+                // Usenet: Season number only
+                // Gde.logika.S07.WEB-DL.1080.25Kuzmich/Gde.logika.S07.E05.WEB-DL.1080.25Kuzmich.mkv
+                new EpisodeExpression(@"(?<seriesname>[\w\.\ ]+?)\.[Ss](?<seasonnumber>\d{1,2})\..*[\\\/](\k<seriesname>\.)?([Ss]\k<seasonnumber>\.?)?([Ee]?(?<epnumber>(\d{1,3}|[3-90]\d{3})))\.(\k<seriesname>\.)?([Ss]\k<seasonnumber>\.)?((?<epname>[\w\.\ ]+)\.)??.*$")
+                {
+                    IsNamed = true
+                },
+
+                // Usenet: Year only
+                // Katya.na.avtomate.2021.WEB-DL.1080p/03.Katya.na.avtomate.2021.WEB-DL.1080p.mkv
+                // Chto.Gde.Kogda.Vesennjaja serija.Igr.2021.HDTV(1080i).25Kuzmich/04.Chto.Gde.Kogda.Vesennjaja serija.Igr.2021.HDTV(1080i).25Kuzmich.ts
+                // MosGaz.2012.WEB-DL.(1080p).lunkin/MosGaz.07.serya.WEB-DL.(1080p).by.lunkin.mkv
+                // Happy.end.2021.WEB-DL.(1080p).Getty/Happy.end.e03.2021.WEB-DL.(1080p).Getty.mkv
+                // Zhuki.2019.WEB-DL.(1080p).Getty/Zhuki.e17.Film.o.seriale.2019.WEB-DL.(1080p).Getty.mkv
+                new EpisodeExpression(@"(?<seriesname>[\w\.\ ]+?)\.(?<year>[1-2]\d{3})\..*[\\\/](\k<seriesname>\.)?(\k<year>\.)?([Ee]?(?<epnumber>(\d{1,3}|[3-90]\d{3})))\.(\k<seriesname>\.)?(\k<year>\.)?((?<epname>[\w\.\ ]+)\.)?(\k<year>\.)?.*$")
+                {
+                    IsNamed = true
+                },
+
                 // *** Begin Kodi Standard Naming
                 // <!-- foo.s01.e01, foo.s01_e01, S01E02 foo, S01 - E02 -->
                 new EpisodeExpression(@".*(\\|\/)(?<seriesname>((?![Ss]([0-9]+)[][ ._-]*[Ee]([0-9]+))[^\\\/])*)?[Ss](?<seasonnumber>[0-9]+)[][ ._-]*[Ee](?<epnumber>[0-9]+)([^\\/]*)$")

@@ -53,6 +53,26 @@ namespace Jellyfin.Naming.Tests.TV
         [InlineData("Series/1-12 - The Woman.mp4", 1)]
         [InlineData(@"Running Man/Running Man S2017E368.mkv", 2017)]
         [InlineData(@"Case Closed (1996-2007)/Case Closed - 317.mkv", 3)]
+
+        // Usenet: year than season number
+        [InlineData("Shadow.and.Bone.2021.S01.WEB-DL.1080p-Kyle/Shadow.and.Bone.2021.S01E02.WEB-DL.1080p-Kyle.mkv", 1)]
+
+        // Usenet: Season number than year
+        [InlineData("Zhuki.S02.2021.WEB-DL.1080p/06.Zhuki.S02.2021.WEB-DL.1080p.mkv", 2)]
+        [InlineData("Atiye.s01.2019.L2.WEBRip1080p/Atiye.e04.2019.L2.WEBRip1080p.mp4", 1)]
+        [InlineData("IP.Pirogova.S04.2021.WEB-DL.(1080p)/IP.Pirogova.s04e03.2021.WEB-DL.(1080p).mkv", 4)]
+
+        // Usenet: Season number only
+        [InlineData("Gde.logika.S07.WEB-DL.1080.25Kuzmich/Gde.logika.S07.E02.WEB-DL.1080.25Kuzmich.mkv", 7)]
+        [InlineData("The.Girlfriend.Experience.S01.HDTV.1080p.FocusStudio/The.Girlfriend.Experience.S01E07.HDTV.1080p.FocusStudio.mkv", 1)]
+
+        // Usenet: Year only
+        [InlineData("Zhuki.2019.WEB-DL.(1080p).Getty/Zhuki.e17.Film.o.seriale.2019.WEB-DL.(1080p).Getty.mkv", null)]
+        [InlineData("Mediator.2021.WEB-DL.(1080p).Getty/Mediator.e04.2021.WEB-DL.(1080p).Getty.mkv", null)]
+        [InlineData("V.aktivnom.poiske.2021.WEB-DL.1080p/07.V.aktivnom.poiske.2021.WEB-DL.1080p.mkv", null)]
+        [InlineData("Chto.Gde.Kogda.Vesennjaja serija.Igr.2021.HDTV(1080i).25Kuzmich/04.Chto.Gde.Kogda.Vesennjaja serija.Igr.2021.HDTV(1080i).25Kuzmich.ts", null)]
+        [InlineData("MosGaz.2012.WEB-DL.(1080p).lunkin/MosGaz.07.serya.WEB-DL.(1080p).by.lunkin.mkv", null)]
+
         // TODO: [InlineData(@"Seinfeld/Seinfeld 0807 The Checks.avi", 8)]
         public void GetSeasonNumberFromEpisodeFileTest(string path, int? expected)
         {

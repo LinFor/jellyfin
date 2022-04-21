@@ -73,6 +73,27 @@ namespace Jellyfin.Naming.Tests.TV
         [InlineData("Season 2/Episode 21 - 94 Meetings.mp4", 21)] // Title starts with a number
         [InlineData("/The.Legend.of.Condor.Heroes.2017.V2.web-dl.1080p.h264.aac-hdctv/The.Legend.of.Condor.Heroes.2017.E07.V2.web-dl.1080p.h264.aac-hdctv.mkv", 7)]
         // [InlineData("Case Closed (1996-2007)/Case Closed - 317.mkv", 317)] // triple digit episode number
+
+        // Usenet: year than season number
+        [InlineData("Shadow.and.Bone.2021.S01.WEB-DL.1080p-Kyle/Shadow.and.Bone.2021.S01E02.WEB-DL.1080p-Kyle.mkv", 2)]
+
+        // Usenet: Season number than year
+        [InlineData("Zhuki.S02.2021.WEB-DL.1080p/06.Zhuki.S02.2021.WEB-DL.1080p.mkv", 6)]
+        [InlineData("Atiye.s01.2019.L2.WEBRip1080p/Atiye.e04.2019.L2.WEBRip1080p.mp4", 4)]
+        [InlineData("IP.Pirogova.S04.2021.WEB-DL.(1080p)/IP.Pirogova.s04e03.2021.WEB-DL.(1080p).mkv", 3)]
+
+        // Usenet: Season number only
+        [InlineData("Gde.logika.S07.WEB-DL.1080.25Kuzmich/Gde.logika.S07.E05.WEB-DL.1080.25Kuzmich.mkv", 5)]
+        [InlineData("The.Girlfriend.Experience.S01.HDTV.1080p.FocusStudio/The.Girlfriend.Experience.S01E07.HDTV.1080p.FocusStudio.mkv", 7)]
+
+        // Usenet: Year only
+        [InlineData("Zhuki.2019.WEB-DL.(1080p).Getty/Zhuki.e17.Film.o.seriale.2019.WEB-DL.(1080p).Getty.mkv", 17)]
+        [InlineData("Mediator.2021.WEB-DL.(1080p).Getty/Mediator.e04.2021.WEB-DL.(1080p).Getty.mkv", 4)]
+        [InlineData("V.aktivnom.poiske.2021.WEB-DL.1080p/07.V.aktivnom.poiske.2021.WEB-DL.1080p.mkv", 7)]
+        [InlineData("Chto.Gde.Kogda.Vesennjaja serija.Igr.2021.HDTV(1080i).25Kuzmich/04.Chto.Gde.Kogda.Vesennjaja serija.Igr.2021.HDTV(1080i).25Kuzmich.ts", 4)]
+        [InlineData("MosGaz.2012.WEB-DL.(1080p).lunkin/MosGaz.07.serya.WEB-DL.(1080p).by.lunkin.mkv", 7)]
+
+        // TODO: [InlineData("Case Closed (1996-2007)/Case Closed - 317.mkv", 317)] // triple digit episode number
         // TODO: [InlineData("Season 2/16 12 Some Title.avi", 16)]
         // TODO: [InlineData("Season 4/Uchuu.Senkan.Yamato.2199.E03.avi", 3)]
         // TODO: [InlineData("Season 2/7 12 Angry Men.avi", 7)]
